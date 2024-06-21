@@ -1,7 +1,6 @@
 export const names = [
     "Kenanga", "Kamboja", "Cempaka", "Melati Hitam", "Anggrek Dendam", "Bunga Setan", "Bunga Bangkai", "Bunga Puspa", "Bunga Wijaya Kusuma", "Bunga Arjuna", "Harimau Jawa", "Ayam Cemani", "Burung Hantu", "Biawak Hitam", "Ular Sendok", "Kucing Hitam", "Macan Kumbang", "Lutung Kasarung", "Gagak Hitam", "Jenglot", 
     "Roro Jonggrang", "Brawijaya", "Ken Arok", "Kebo Iwa", "Gajah Mada", "Ki Ageng Selo", "Sri Sultan Hamengkubuwono", "Raden Wijaya", "Sunan Kalijaga", "Diponegoro",
-    "Keraton", "Candi Prambanan", "Borobudur", "Gunung Lawu", "Parangkusumo", "Pantai Parangtritis", "Sendang Kamal", "Sumur Gumuling", "Lawang Sewu", "Taman Sari",
     "Warung Doyong", "Pohon Beringin", "Pohon Trembesi", "Pohon Keluwih", "Pohon Randu", "Pohon Gayam", "Pohon Asam", "Pohon Pulus", "Pohon Jati", "Pohon Sawo Kecik",
     "Mantra Sirep", "Ajian Jaran Goyang", "Ajian Brajamusti", "Ajian Pengasihan", "Ilmu Pelet", "Ajian Lembu Sekilan", "Ajian Rawarontek", "Ajian Pancasona", "Ajian Semar Mesem", "Ajian Teluh",
     "Semar", "Gareng", "Petruk", "Bagong", "Arjuna", "Bima", "Nakula", "Sadewa", "Srikandi", "Gatotkaca",
@@ -14,7 +13,6 @@ export const names = [
     "Angklung", "Bedug", "Pencak Silat", "Tari Kecak", "Tari Bedhaya", "Tari Gambyong", "Tari Srimpi", "Pringgitan", "Pendopo", "Balairung",
     "Seruni", "Bunga Kantil", "Bunga Mawar Hitam", "Bunga Soka", "Bunga Gandasuli", "Bunga Padma", "Bunga Sedap Malam", "Bunga Tasbih", "Bunga Patma", "Bunga Ciplukan",
     "Harimau Putih", "Anjing Hitam", "Kelelawar", "Ikan Lele", "Burung Kepodang", "Buaya Muara", "Burung Elang Hitam", "Burung Kedasih", "Burung Jalak", "Gajah Sumatera",
-    "Putri Hijau", "Nyi Roro Kidul", "Raden Patah", "Jayabaya", "Sultan Agung", "Ki Hajar Dewantara", "Raden Ajeng Kartini", "Ki Ageng Mangir", "Damarwulan", "Mpu Gandring",
     "Puri Mangkunegaran", "Sendang Tirta", "Waduk Gajah Mungkur", "Goa Jatijajar", "Pantai Wediombo", "Gunung Kelud", "Candi Sewu", "Candi Sukuh", "Pantai Karangbolong",
     "Pohon Dewandaru", "Pohon Pule", "Pohon Asem Jawa", "Pohon Waru", "Pohon Cendana", "Pohon Bambu", "Pohon Pinus", "Pohon Kayu Putih", "Pohon Sawo Manila", "Pohon Mangga",
     "Mantra Kecantikan", "Ajian Kalacakra", "Ajian Waringin Sungsang", "Ilmu Kebal", "Ajian Pemikat", "Ajian Tapak Saketi", "Ilmu Santet", "Ajian Wisanggeni", "Ajian Karang", "Ajian Lembu Sekilan",
