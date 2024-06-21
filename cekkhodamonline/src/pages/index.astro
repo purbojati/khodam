@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { names } from '../khodamNames.js';
+
+function getRandomName() {
+  return names[Math.floor(Math.random() * names.length)];
+}
+---
+
+<Layout>
+  <div id="submission-page" class="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-4 transition-opacity duration-500 ease-in-out">
+    <h1 class="text-5xl font-bold mb-8 text-purple-500">Cek Khodam Online</h1>
+    <p class="mb-6 text-lg text-gray-400">Temukan Khodam Anda berdasarkan nama Anda</p>
+    <form class="w-full max-w-sm" id="khodam-form">
+      <input
+        type="text"
+        placeholder="Masukkan Nama Anda"
+        class="w-full p-2 border border-purple-500 bg-gray-800 text-white rounded mb-4"
+        id="name-input"
+        required
+      />
+      <button
+        type="submit"
+        class="w-full bg-purple-700 hover:bg-purple-800 text-white p-2 rounded"
+      >
+        Cek Khodam Saya
+      </button>
+    </form>
+    <div id="loading" class="mt-4 text-gray-400" style="display: none;">
+      <div class="loader"></div>
+      Memuat...
+    </div>
+    <div class="mt-8">
+      <img src="/cek-khodam-online.webp?text=Khodam" alt="Khodam Image" class="rounded shadow-lg" style="max-width: 380px;">
+    </div>
+    <footer class="mt-8 text-gray-400 text-center">
+      <p>Made by <a href="https://x.com/purbojatie" target="_blank" rel="noopener noreferrer">Adjie</a></p>
+    </footer>
+  </div>
+
+  <div id="result-page" class="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-4 transition-opacity duration-500 ease-in-out" style="display: none;">
+    <div id="result" class="text-2xl text-green-400 font-bold border border-green-500 bg-gray-800 rounded text-center p-10" style="line-height: 1.5;"></div> 
+    <button id="back-button" class="mt-4 bg-purple-700 hover:bg-purple-800 text-white p-2 rounded">Cek Nama Lain</button>
+  </div>
+
+  <script>
+    import { names } from '../khodamNames.js';
+    import confetti from 'canvas-confetti';
+
+    function getRandomName() {
+      return names[Math.floor(Math.random() * names.length)];
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('khodam-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const nameInput = document.getElementById('name-input').value;
+        const submissionPage = document.getElementById('submission-page');
+        const resultPage = document.getElementById('result-page');
+        const loadingElement = document.getElementById('loading');
+        const resultElement = document.getElementById('result');
+
+        submissionPage.style.opacity = 0;
+        setTimeout(() => {
+          submissionPage.style.display = 'none';
+          resultPage.style.display = 'flex';
+          resultPage.style.opacity = 1;
+
+          loadingElement.style.display = 'flex';
+          resultElement.innerHTML = '';
+
+          setTimeout(() => {
+            loadingElement.style.display = 'none';
+            const randomName = getRandomName();
+            resultElement.innerHTML = `Berdasarkan analisis, Khodam dalam tubuh Anda yang bernama '${nameInput}' adalah: <br><span class="random-name">${randomName}</span>`;
+            const randomNameElement = document.querySelector('.random-name');
+            randomNameElement.style.color = '#ffcc00';
+            randomNameElement.style.fontSize = '3rem';
+            randomNameElement.style.textShadow = '2px 2px 4px #000000';
+            randomNameElement.style.fontFamily = 'Georgia';
+
+            // Trigger confetti animation
+            confetti();
+          }, 2000);
+        }, 500);
+      });
+
+      document.getElementById('back-button').addEventListener('click', function() {
+        const submissionPage = document.getElementById('submission-page');
+        const resultPage = document.getElementById('result-page');
+
+        resultPage.style.opacity = 0;
+        setTimeout(() => {
+          resultPage.style.display = 'none';
+          submissionPage.style.display = 'flex';
+          submissionPage.style.opacity = 1;
+        }, 500);
+      });
+    });
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+
+    body {
+      font-family: 'UnifrakturCook', cursive;
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .random-name {
+      color: #ffcc00;
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px #000000;
+    }
+  </style>
+</Layout>
