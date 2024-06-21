@@ -9,7 +9,7 @@ function getRandomName() {
 
 <Layout>
   <div id="submission-page" class="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-4 transition-opacity duration-500 ease-in-out">
-    <h1 class="text-5xl font-bold mb-8 text-purple-500">Cek Khodam Online</h1>
+    <h1 class="text-5xl font-bold mb-8 text-purple-500">Cek Khodam Jawa</h1>
     <p class="mb-6 text-lg text-gray-400">Temukan Khodam Anda berdasarkan nama Anda</p>
     <form class="w-full max-w-sm" id="khodam-form">
       <input
@@ -46,8 +46,6 @@ function getRandomName() {
   <script>
     import { names } from '../khodamNames.js';
     import confetti from 'canvas-confetti';
-
-    declare module 'canvas-confetti';
 
     function getRandomName() {
       return names[Math.floor(Math.random() * names.length)];
