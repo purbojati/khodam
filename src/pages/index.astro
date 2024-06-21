@@ -47,55 +47,68 @@ function getRandomName() {
     import { names } from '../khodamNames.js';
     import confetti from 'canvas-confetti';
 
+    declare module 'canvas-confetti';
+
     function getRandomName() {
       return names[Math.floor(Math.random() * names.length)];
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('khodam-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const nameInput = document.getElementById('name-input').value;
-        const submissionPage = document.getElementById('submission-page');
-        const resultPage = document.getElementById('result-page');
-        const loadingElement = document.getElementById('loading');
-        const resultElement = document.getElementById('result');
+      const khodamForm = document.getElementById('khodam-form');
+      if (khodamForm) {
+        khodamForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const nameInput = (document.getElementById('name-input') as HTMLInputElement)?.value;
+          const submissionPage = document.getElementById('submission-page');
+          const resultPage = document.getElementById('result-page');
+          const loadingElement = document.getElementById('loading');
+          const resultElement = document.getElementById('result');
 
-        submissionPage.style.opacity = 0;
-        setTimeout(() => {
-          submissionPage.style.display = 'none';
-          resultPage.style.display = 'flex';
-          resultPage.style.opacity = 1;
+          if (submissionPage && resultPage && loadingElement && resultElement && nameInput) {
+            submissionPage.style.opacity = '0';
+            setTimeout(() => {
+              submissionPage.style.display = 'none';
+              resultPage.style.display = 'flex';
+              resultPage.style.opacity = '1';
 
-          loadingElement.style.display = 'flex';
-          resultElement.innerHTML = '';
+              loadingElement.style.display = 'flex';
+              resultElement.innerHTML = '';
 
-          setTimeout(() => {
-            loadingElement.style.display = 'none';
-            const randomName = getRandomName();
-            resultElement.innerHTML = `Berdasarkan analisis, Khodam dalam tubuh Anda yang bernama '${nameInput}' adalah: <br><span class="random-name">${randomName}</span>`;
-            const randomNameElement = document.querySelector('.random-name');
-            randomNameElement.style.color = '#ffcc00';
-            randomNameElement.style.fontSize = '3rem';
-            randomNameElement.style.textShadow = '2px 2px 4px #000000';
-            randomNameElement.style.fontFamily = 'Georgia';
+              setTimeout(() => {
+                loadingElement.style.display = 'none';
+                const randomName = getRandomName();
+                resultElement.innerHTML = `Berdasarkan analisis, Khodam dalam tubuh Anda yang bernama '${nameInput}' adalah: <br><span class="random-name">${randomName}</span>`;
+                const randomNameElement = document.querySelector('.random-name') as HTMLElement;
+                if (randomNameElement) {
+                  randomNameElement.style.color = '#ffcc00';
+                  randomNameElement.style.fontSize = '3rem';
+                  randomNameElement.style.textShadow = '2px 2px 4px #000000';
+                }
 
-            // Trigger confetti animation
-            confetti();
-          }, 2000);
-        }, 500);
-      });
+                // Trigger confetti animation
+                confetti();
+              }, 2000);
+            }, 500);
+          }
+        });
+      }
 
-      document.getElementById('back-button').addEventListener('click', function() {
-        const submissionPage = document.getElementById('submission-page');
-        const resultPage = document.getElementById('result-page');
+      const backButton = document.getElementById('back-button');
+      if (backButton) {
+        backButton.addEventListener('click', function() {
+          const submissionPage = document.getElementById('submission-page');
+          const resultPage = document.getElementById('result-page');
 
-        resultPage.style.opacity = 0;
-        setTimeout(() => {
-          resultPage.style.display = 'none';
-          submissionPage.style.display = 'flex';
-          submissionPage.style.opacity = 1;
-        }, 500);
-      });
+          if (submissionPage && resultPage) {
+            resultPage.style.opacity = '0';
+            setTimeout(() => {
+              resultPage.style.display = 'none';
+              submissionPage.style.display = 'flex';
+              submissionPage.style.opacity = '1';
+            }, 500);
+          }
+        });
+      }
     });
   </script>
 
